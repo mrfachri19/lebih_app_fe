@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { postOrganisasi } from "../../api";
 import { Messaege } from "../../helper/helper";
+import Select from "react-dropdown-select";
 
 function OrderForms() {
   const history = useHistory();
@@ -51,6 +52,7 @@ function OrderForms() {
       }
       const response = await postOrganisasi(formImage);
       Messaege("Succes", "Success add menu", "success");
+      localStorage.setItem("type", select.label)
       setTimeout(() => {
         history.push("/admin");
       }, 2000);
@@ -60,6 +62,17 @@ function OrderForms() {
       Messaege("Failed", `${error}`, "error");
     }
   };
+  const [select, setSelect] = useState("");
+  let dataBank = [
+    { id: 1, login: "Recycle" },
+    { id: 2, login: "Sharing" },
+  ];
+  const items = dataBank?.map((item) => {
+    const data = {};
+    data.label = item.login;
+    data.value = item.id;
+    return data;
+  });
   return (
     <div className="flex flex-wrap pb-10">
       <div className="w-full xl:w-1/2 mb-12 xl:mb-0 px-4 mt-20 pl-16">
@@ -99,6 +112,14 @@ function OrderForms() {
             name="idNumber"
             onChange={handleChangeInput}
           />
+               <Select
+                placeholder="Select type"
+                className="w-full border-2 px-3 py-3 my-5 placeholder-slate-300 text-black bg-white rounded-2xl text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150"
+                options={items}
+                hideSelectedOptions={false}
+                value={dataBank}
+                onChange={(selected) => setSelect(selected)}
+              />
           <div className="relative w-full mb-3 border">
             <div className="border-2 rounded-md block border-white w-1/2 h-56 ">
               {formMenu.image && (

@@ -5,7 +5,6 @@ import iconClock from "../../assets/img/mdi_clock-time-eight-outline.svg";
 import iconToko from "../../assets/img/material-symbols_table-restaurant-outline.svg";
 import Select from "react-dropdown-select";
 import { useHistory } from "react-router-dom";
-import SuccessModal from "../../components/Modals/ModalSuccess";
 import Modal from "../../components/Modals";
 
 function OrderDetail() {
