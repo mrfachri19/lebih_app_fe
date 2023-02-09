@@ -21,6 +21,7 @@ import Order from "../views/Order/Order.js";
 import OrderCusrtomer from "../views/Order/OrderCustomer.js";
 import OrderDetail from "../views/Order/OrderDetail.js";
 import OrderPreview from "../views/Order/OrderPreview.js";
+import Organisasi from "../views/Organisasi/Organisasi.js";
 
 export default function Admin() {
  
@@ -55,7 +56,8 @@ export default function Admin() {
               {/* pupuk */}
               <Route path="/admin/livechat" exact component={LIveChat} />
               <Route path="/admin/chat" exact component={Chat} />
-
+              {/* organisasi */}
+              <Route path="/admin/organisasi" exact component={Organisasi} />
               {/* artikel */}
               <Route path="/admin/artikel" exact component={Recycle} />
               <Redirect from="/admin" to="/admin" />

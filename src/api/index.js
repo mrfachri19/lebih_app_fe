@@ -85,6 +85,8 @@ export const PostMenu = post("menu")
 // ============= order
 export const postOrder = post("order");
 export const getAllOrder = get("order");
+// ============= organisasi
+export const postOrganisasi = post("organisasi");
 
 const API = {
   register,

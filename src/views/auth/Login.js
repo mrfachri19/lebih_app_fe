@@ -25,7 +25,7 @@ export default function Login() {
         } else if (localStorage.getItem("role") === "driver") {
           history.push("/admin/driver");
         } else if (localStorage.getItem("role") === "organization") {
-          history.push("/admin/sharing");
+          history.push("/admin/organisasi");
         }else if (localStorage.getItem("role") === "admin") {
           history.push("/admin/approval");
         }

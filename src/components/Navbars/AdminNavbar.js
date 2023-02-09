@@ -44,7 +44,10 @@ export default function Navbar() {
               ></path>
             </svg>
           </button>
-          <div className="hidden w-full md:block md:w-auto flex-1" id="navbar-default">
+          <div
+            className="hidden w-full md:block md:w-auto flex-1"
+            id="navbar-default"
+          >
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-green-20 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link
@@ -54,12 +57,25 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
+              {localStorage.getItem("role") === "merchant" ? (
+                <li>
+                  <Link
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                    to="/admin/chat"
+                  >
+                    Live chat
+                  </Link>
+                </li>
+              ) : (
+                <></>
+              )}
+
               <li>
                 <Link
                   className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  to="/admin/chat"
+                  to="/admin/livechat"
                 >
-                  Live chat
+                  Customer Support
                 </Link>
               </li>
               <li>
@@ -70,6 +86,43 @@ export default function Navbar() {
                   Article
                 </Link>
               </li>
+              <li>
+                {localStorage.getItem("role") === "merchant" ? (
+                  <Link
+                    to="/admin/sharing"
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                  >
+                    Sharing
+                  </Link>
+                ) : (
+                  <></>
+                )}
+              </li>
+              <li>
+                {localStorage.getItem("role") === "merchant" ? (
+                  <Link
+                    to="/admin/sharing"
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                  >
+                    Recycle
+                  </Link>
+                ) : (
+                  <></>
+                )}
+              </li>
+              <li>
+                {localStorage.getItem("role") === "admin" ? (
+                  <Link
+                    to="admin/approval"
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                  >
+                    Approval
+                  </Link>
+                ) : (
+                  <></>
+                )}
+              </li>
+
               <li>
                 {localStorage.getItem("role") === "merchant" ? (
                   <Link
@@ -96,44 +149,6 @@ export default function Navbar() {
                   <></>
                 )}
               </li>
-
-              <li>
-                {localStorage.getItem("role") === "organization" ? (
-                  <Link
-                    to="/admin/sharing"
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  >
-                    Sharing
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </li>
-              <li>
-                {localStorage.getItem("role") === "organization" ? (
-                  <Link
-                    to="/admin/sharing"
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  >
-                    Recycle
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </li>
-              <li>
-                {localStorage.getItem("role") === "admin" ? (
-                  <Link
-                    to="admin/approval"
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  >
-                    Approval
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </li>
-        
             </ul>
           </div>
           <form className="md:flex hidden flex-row flex-wrap items-center mr-3">
