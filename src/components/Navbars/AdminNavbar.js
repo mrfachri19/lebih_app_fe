@@ -92,7 +92,7 @@ export default function Navbar() {
                     className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
                     to="/admin/driver/delivery"
                   >
-                    Order
+                    Delivery
                   </Link>
                 ) : localStorage.getItem("role") === "costumer" ? (
                   <Link
