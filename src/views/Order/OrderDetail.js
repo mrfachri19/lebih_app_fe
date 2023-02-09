@@ -5,9 +5,12 @@ import iconClock from "../../assets/img/mdi_clock-time-eight-outline.svg";
 import iconToko from "../../assets/img/material-symbols_table-restaurant-outline.svg";
 import Select from "react-dropdown-select";
 import { useHistory } from "react-router-dom";
+import SuccessModal from "../../components/Modals/ModalSuccess";
+import Modal from "../../components/Modals";
 
 function OrderDetail() {
-  const history = useHistory()
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   const [select, setSelect] = useState("");
   let dataBank = [
     { id: 1, login: "BCA Virtual Account" },
@@ -62,7 +65,9 @@ function OrderDetail() {
           </div>
           <div className="flex mt-20">
             <img
-              src={`https://apilebihapp-production.up.railway.app/uploads/movie/${localStorage.getItem("image")}`}
+              src={`https://apilebihapp-production.up.railway.app/uploads/movie/${localStorage.getItem(
+                "image"
+              )}`}
               alt="img"
               style={{ width: "150px", height: "170px" }}
               className="rounded-xl mr-10"
@@ -140,10 +145,11 @@ function OrderDetail() {
       <button
         type="button"
         className=" ml-9 text-white text bg-green-20 hover:bg-green-700 focus:ring-4 focus:bg-green-20 font-medium rounded-lg text-xl m px-12 py-2.5 mr-2 mb-2 dark:bg-green-20 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-700"
-        onClick={() => history.push("/admin/order/preview")}
-      > 
+        onClick={() => setShowModal(!showModal)}
+      >
         Pesan Sekarang
       </button>
+      <Modal isShow={showModal} />
     </>
   );
 }

@@ -57,7 +57,8 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
-              {localStorage.getItem("role") === "merchant" ? (
+              {localStorage.getItem("role") === "merchant" ||
+              localStorage.getItem("role") === "organization" ? (
                 <li>
                   <Link
                     className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
@@ -77,6 +78,32 @@ export default function Navbar() {
                 >
                   Customer Support
                 </Link>
+              </li>
+              <li>
+                {localStorage.getItem("role") === "merchant" ? (
+                  <Link
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                    to="/admin/confirm-order"
+                  >
+                    Order
+                  </Link>
+                ) : localStorage.getItem("role") === "driver" ? (
+                  <Link
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                    to="/admin/driver/delivery"
+                  >
+                    Order
+                  </Link>
+                ) : localStorage.getItem("role") === "costumer" ? (
+                  <Link
+                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                    to="/admin/order"
+                  >
+                    Order
+                  </Link>
+                ) : (
+                  <></>
+                )}
               </li>
               <li>
                 <Link
@@ -117,33 +144,6 @@ export default function Navbar() {
                     className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
                   >
                     Approval
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </li>
-
-              <li>
-                {localStorage.getItem("role") === "merchant" ? (
-                  <Link
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                    to="/admin/confirm-order"
-                  >
-                    Order
-                  </Link>
-                ) : localStorage.getItem("role") === "driver" ? (
-                  <Link
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                    to="/admin/driver/delivery"
-                  >
-                    Order
-                  </Link>
-                ) : localStorage.getItem("role") === "costumer" ? (
-                  <Link
-                    className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                    to="/admin/order"
-                  >
-                    Order
                   </Link>
                 ) : (
                   <></>

@@ -140,18 +140,9 @@ function OrderPreview() {
           </p>
           <div className="flex my-10 mx-9">
             <p className="font-medium text-3xl text-green-20 ">
-              Metode Pembayaran{" "}
+              Metode Pembayaran: {localStorage.getItem("payment")} | {localStorage.getItem("akun")}
             </p>
-            <div className="w-1/2">
-              <Select
-                placeholder="Select Bank"
-                className="w-full border-2 px-3 py-3 placeholder-slate-300 text-black bg-white rounded-2xl text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150"
-                options={items}
-                hideSelectedOptions={false}
-                value={dataBank}
-                onChange={(selected) => setSelect(selected)}
-              />
-            </div>
+
           </div>
           <div className="block mb-2 ml-9">
             <div className="flex flex-row gap-9">

@@ -140,7 +140,7 @@ function OrderCusrtomer() {
                     localStorage.setItem("jumlah", jumlah);
                   }}
                 >
-                  add
+                  Order
                 </button>
               </div>
             </div>
