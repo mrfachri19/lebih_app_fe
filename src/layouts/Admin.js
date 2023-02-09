@@ -10,6 +10,7 @@ import ApprovalDetail from "../views/Admin/ApprovalDetail.js";
 import DeliveryList from "../views/Driver/DeliveryList.js";
 import Driver from "../views/Driver/Driver.js";
 import LandingPage from "../views/LandingPage/LandingPage"
+import Chat from "../views/Merchant/Chat.js";
 import ConfirmDetail from "../views/Merchant/CorfirmDetail.js";
 import DaftarOrder from "../views/Merchant/DaftarOrder.js";
 import LIveChat from "../views/Merchant/LiveChat.js";
@@ -53,6 +54,8 @@ export default function Admin() {
               <Route path="/admin/driver/delivery/:id" exact component={Driver} />
               {/* pupuk */}
               <Route path="/admin/livechat" exact component={LIveChat} />
+              <Route path="/admin/chat" exact component={Chat} />
+
               {/* artikel */}
               <Route path="/admin/artikel" exact component={Recycle} />
               <Redirect from="/admin" to="/admin" />
