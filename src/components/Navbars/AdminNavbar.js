@@ -44,7 +44,7 @@ export default function Navbar() {
               ></path>
             </svg>
           </button>
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+          <div className="hidden w-full md:block md:w-auto flex-1" id="navbar-default">
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-green-20 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link
@@ -136,7 +136,7 @@ export default function Navbar() {
         
             </ul>
           </div>
-          <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
+          <form className="md:flex hidden flex-row flex-wrap items-center mr-3">
             <div className="relative flex w-full flex-wrap items-stretch">
               <span className="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                 <i className="fas fa-search"></i>
@@ -148,7 +148,7 @@ export default function Navbar() {
               />
             </div>
           </form>
-          <div className="ml-auto">
+          <div className="ml-auto z-30">
             {localStorage.getItem("token") ? (
               <div className="flex">
                 <h1 className="mt-3 mr-3 font-semibold text-white">
