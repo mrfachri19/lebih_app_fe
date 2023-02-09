@@ -7,6 +7,7 @@ import Select from "react-dropdown-select";
 function OrderForms() {
   const history = useHistory();
   const [preview, setPreview] = useState("");
+  const [select, setSelect] = useState("");
   const [formMenu, setDataFormmenu] = useState({
     address: "",
     nama: "",
@@ -38,6 +39,7 @@ function OrderForms() {
         phone,
         pic,
         idNumber,
+        type: select[0].label,
         image,
       };
       const formImage = new FormData();
@@ -52,17 +54,12 @@ function OrderForms() {
       }
       const response = await postOrganisasi(formImage);
       Messaege("Succes", "Success add menu", "success");
-      localStorage.setItem("type", select.label)
-      setTimeout(() => {
-        history.push("/admin");
-      }, 2000);
       console.log(response);
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");
     }
   };
-  const [select, setSelect] = useState("");
   let dataBank = [
     { id: 1, login: "Recycle" },
     { id: 2, login: "Sharing" },
@@ -112,14 +109,13 @@ function OrderForms() {
             name="idNumber"
             onChange={handleChangeInput}
           />
-               <Select
-                placeholder="Select type"
-                className="w-full border-2 px-3 py-3 my-5 placeholder-slate-300 text-black bg-white rounded-2xl text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150"
-                options={items}
-                hideSelectedOptions={false}
-                value={dataBank}
-                onChange={(selected) => setSelect(selected)}
-              />
+          <Select
+            placeholder="Select type"
+            className="w-full border-2 px-3 py-3 my-5 placeholder-slate-300 text-black bg-white rounded-2xl text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150"
+            options={items}
+            hideSelectedOptions={false}
+            onChange={(selected) => setSelect(selected)}
+          />
           <div className="relative w-full mb-3 border">
             <div className="border-2 rounded-md block border-white w-1/2 h-56 ">
               {formMenu.image && (

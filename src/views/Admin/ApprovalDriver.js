@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getListRestaurant } from "../../api";
+import { getAllDriver } from "../../api";
 import { useHistory, useParams } from "react-router-dom";
 import food1 from "../../assets/img/food-1.png";
 import { Messaege } from "../../helper/helper";
 
-function ApprovalDetail() {
+function ApprovalDriver() {
   const { id } = useParams();
   const history = useHistory();
   const [dataResto, setDataResto] = useState("");
   function getRestaurant() {
-    getListRestaurant(`/${id}`).then((res) => {
+    getAllDriver(`/${id}`).then((res) => {
       var tempList;
       tempList = res.data.data[0];
       console.log("List Data => ", tempList);
@@ -21,38 +21,6 @@ function ApprovalDetail() {
     getRestaurant();
   }, []);
 
-  const dataOrganisasi = [
-    {
-      id: 1,
-      nama: "organisasi 1",
-      alamat: "jalan kencana 87b",
-    },
-    {
-      id: 2,
-      nama: "organisasi 12",
-      alamat: "jalan Merah 87b",
-    },
-    {
-      id: 3,
-      nama: "organisasi 31",
-      alamat: "jalan Lempah biru 87b",
-    },
-  ];
-
-  const dataDriver = [
-    {
-      id: 1,
-      nama: "Driver1",
-    },
-    {
-      id: 2,
-      nama: "Driver 54",
-    },
-    {
-      id: 3,
-      nama: "Driver 31",
-    },
-  ];
   const handleApprove = () => {
     Messaege("Succes", "Success Approve", "success");
   }
@@ -75,9 +43,9 @@ function ApprovalDetail() {
             />
             <div className="block ml-10">
               <h1 className="font-semibold text-sm text-green-20 mt-9">
-              {dataResto.namaResto ? dataResto.namaResto : "Driver 1" }
+              {dataResto.nama}
               </h1>
-              <p className="font-normal text-sm text-green-20">Type: {dataResto ? "merchant" : "driver"}</p>
+              <p className="font-normal text-sm text-green-20">Type: Driver</p>
             </div>
           </div>
           <div>
@@ -118,4 +86,4 @@ function ApprovalDetail() {
   );
 }
 
-export default ApprovalDetail;
+export default ApprovalDriver;

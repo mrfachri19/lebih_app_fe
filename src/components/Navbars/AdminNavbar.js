@@ -128,7 +128,7 @@ export default function Navbar() {
               <li>
                 {localStorage.getItem("role") === "merchant" ? (
                   <Link
-                    to="/admin/sharing"
+                    to="/admin/recycle"
                     className="block py-2 pl-3 pr-4 text-white text-xl font-semibold bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
                   >
                     Recycle

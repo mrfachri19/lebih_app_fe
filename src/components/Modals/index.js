@@ -7,7 +7,7 @@ export default function Modal(props) {
   const history = useHistory();
   const [select, setSelect] = useState("");
   const [nama, setnama] = useState("");
-  const [account, setAccount] = useState("");
+  const [account, setAccount] = useState("700016754352");
 
   let dataLogin = [
     { id: 1, login: "BRI" },
@@ -52,6 +52,7 @@ export default function Modal(props) {
                     className="px-3 py-3 placeholder-slate-300 text-black bg-white rounded-2xl text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Virtual"
                     onChange={(e) => setAccount(e.target.value)}
+                    value={account}
                   />
                 </div>
                 <div className="relative w-full mb-3">

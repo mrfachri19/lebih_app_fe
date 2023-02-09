@@ -27,7 +27,7 @@ function Chat() {
       </div>
       <div className="py-7">
         <h1 className="font-semibold text-lg text-green-20 ml-8 text-left mb-2">
-          Customer service
+          Live Chat with merchant
         </h1>
         <div className="grid-cols-3 grid gap-20 mx-36 py-10">
           {dataResto.map((item, idx) => (

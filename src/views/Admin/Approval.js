@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getListRestaurant } from "../../api";
+import { getListRestaurant, getAllORganisasi, getAllDriver } from "../../api";
 import { useHistory } from "react-router-dom";
 import food1 from "../../assets/img/food-1.png";
 
 function Approval() {
   const history = useHistory();
   const [dataResto, setDataResto] = useState([]);
+  const [dataOrganisasi, setdataOrgaisasi] = useState([]);
+  const [dataDriver, setDataDriver] = useState([]);
+
   function getRestaurant() {
     getListRestaurant().then((res) => {
       var tempList = [];
@@ -14,43 +17,29 @@ function Approval() {
       setDataResto(tempList);
     });
   }
-
+  function getorganisasi() {
+    getAllORganisasi().then((res) => {
+      var tempList = [];
+      tempList = res.data.data;
+      console.log("List Data => ", tempList);
+      setdataOrgaisasi(tempList);
+    });
+  }
+  function getDriver() {
+    getAllDriver().then((res) => {
+      var tempList = [];
+      tempList = res.data.data;
+      console.log("List Data => ", tempList);
+      setDataDriver(tempList);
+    });
+  }
   useEffect(() => {
     getRestaurant();
+    getorganisasi();
+    getDriver()
   }, []);
 
-  const dataOrganisasi = [
-    {
-      id: 1,
-      nama: "organisasi 1",
-      alamat: "jalan kencana 87b",
-    },
-    {
-      id: 2,
-      nama: "organisasi 12",
-      alamat: "jalan Merah 87b",
-    },
-    {
-      id: 3,
-      nama: "organisasi 31",
-      alamat: "jalan Lempah biru 87b",
-    },
-  ];
 
-  const dataDriver = [
-    {
-      id: 1,
-      nama: "Driver1",
-    },
-    {
-      id: 2,
-      nama: "Driver 54",
-    },
-    {
-      id: 3,
-      nama: "Driver 31",
-    },
-  ];
   return (
     <>
       <div className="bg-white py-10 mb-5">
@@ -68,8 +57,8 @@ function Approval() {
                 className="block border-green-20 rounded-xl mb-2 border-2 p-5"
               >
                 <img
-                  src={food1}
-                  alt="img"
+                src={`https://apilebihapp-production.up.railway.app/uploads/movie/${item.image}`}
+                alt="img"
                   style={{ width: "150px", height: "170px" }}
                   className="rounded-xl border-2 m-auto"
                 />
@@ -77,13 +66,16 @@ function Approval() {
                   {item.nama}
                 </h1>
                 <p className="font-semibold text-base text-center text-green-20">
-                  {item.alamat}
+                  {item.address}
+                </p>
+                <p className="font-semibold text-base text-center text-green-20">
+                  {item.idNumber}
                 </p>
                 <button
                   type="button"
                   className="text-white mt-3 bg-green-20 hover:bg-green-700 focus:ring-4 focus:bg-green-20 font-medium rounded-lg text-xl px-12 py-2.5 mb-2 dark:bg-green-20 focus:outline-none mx-10"
                   onClick={() =>
-                    history.push(`/admin/approval/detail/${item.id}`)
+                    history.push(`/admin/approval-organisasi/detail/${item.id}`)
                   }
                 >
                   Detail
@@ -101,20 +93,20 @@ function Approval() {
                 className="block border-green-20 rounded-xl mb-2 border-2 p-5"
               >
                 <img
-                  src={food1}
-                  alt="img"
+                src={`https://apilebihapp-production.up.railway.app/uploads/movie/${item.image}`}
+                alt="img"
                   style={{ width: "150px", height: "170px" }}
                   className="rounded-xl border-2 m-auto"
                 />
                 <h1 className="font-semibold text-base text-center text-green-20 uppercase">
                   {item.nama}
                 </h1>
-       
+
                 <button
                   type="button"
                   className="text-white mt-3 bg-green-20 hover:bg-green-700 focus:ring-4 focus:bg-green-20 font-medium rounded-lg text-xl px-12 py-2.5 mb-2 dark:bg-green-20 focus:outline-none mx-10"
                   onClick={() =>
-                    history.push(`/admin/approval/detail/${item.id}`)
+                    history.push(`/admin/approval-driver/detail/${item.id}`)
                   }
                 >
                   Detail
@@ -147,7 +139,7 @@ function Approval() {
                   type="button"
                   className="text-white mt-3 bg-green-20 hover:bg-green-700 focus:ring-4 focus:bg-green-20 font-medium rounded-lg text-xl px-12 py-2.5 mb-2 dark:bg-green-20 focus:outline-none mx-10"
                   onClick={() =>
-                    history.push(`/admin/approval/detail/${item.id}`)
+                    history.push(`/admin/approval-merchant/detail/${item.id}`)
                   }
                 >
                   Detail

@@ -87,6 +87,12 @@ export const postOrder = post("order");
 export const getAllOrder = get("order");
 // ============= organisasi
 export const postOrganisasi = post("organisasi");
+export const getAllORganisasi = get("organisasi");
+// ============= driver
+export const getAllDriver = get("driver");
+// ============= driver
+export const postArtikel = post("artikel");
+export const getArtikel = get("artikel");
 
 const API = {
   register,
@@ -97,7 +103,11 @@ const API = {
   merchantPost,
   postOrder,
   getAllOrder,
-  PostMenu
+  PostMenu,
+  getAllORganisasi,
+  getAllDriver,
+  postArtikel,
+  getArtikel
 };
 
 export default API;

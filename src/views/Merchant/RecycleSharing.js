@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getAllORganisasi } from "../../api";
 import food2 from "../../assets/img/food-2.png";
-import OrderForms from "../Order/OrderForms";
 import { Messaege } from "../../helper/helper";
 import { useHistory } from "react-router-dom";
+import OrderFormsRcycle from "../Order/OrderFormsRcycle";
 
-function Sharing() {
+function RecycleSharing() {
   const history = useHistory();
   const [dataResto, setDataResto] = useState([]);
   function getRestaurant() {
@@ -13,11 +13,10 @@ function Sharing() {
       var tempList = [];
       tempList = res.data.data;
       let temps = tempList.filter((item) => {
-        return item.type === "Sharing";
+        return item.type === "Recycle";
       });
       setDataResto(temps);
       console.log("List Data => ", temps);
-
     });
   }
 
@@ -35,7 +34,7 @@ function Sharing() {
   };
   return (
     <>
-      <OrderForms />
+      <OrderFormsRcycle />
       <div className="bg-green-20 py-10">
         <h1 className="font-semibold text-5xl text-white text-center mb-9">
           Food Form
@@ -102,7 +101,7 @@ function Sharing() {
                 {item.nama}{" "}
               </h1>
               <p className="font-normal text-sm text-green-20 mt-5">
-                {item.address}{" "}
+                {item.alamat}{" "}
               </p>
               <button
                 type="button"
@@ -110,7 +109,8 @@ function Sharing() {
                 onClick={() => {
                   history.push("/admin/sharing-delivery");
                   localStorage.setItem("namaOrganisasi", item.nama);
-                }}              >
+                }}
+              >
                 donate
               </button>{" "}
             </div>
@@ -121,4 +121,4 @@ function Sharing() {
   );
 }
 
-export default Sharing;
+export default RecycleSharing;

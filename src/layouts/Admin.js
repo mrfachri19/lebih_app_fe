@@ -6,15 +6,19 @@ import Footer from "../components/Footers/Footer.js";
 
 import AdminNavbar from "../components/Navbars/AdminNavbar.js";
 import Approval from "../views/Admin/Approval.js";
-import ApprovalDetail from "../views/Admin/ApprovalDetail.js";
+import ApprovalDriver from "../views/Admin/ApprovalDriver.js";
+import ApprovalOrganisasi from "../views/Admin/ApprovalOrganisasi.js";
+import ApprovalDetail from "../views/Admin/ApproverMerchant.js";
 import DeliveryList from "../views/Driver/DeliveryList.js";
 import Driver from "../views/Driver/Driver.js";
 import LandingPage from "../views/LandingPage/LandingPage"
+import ArtikelDetail from "../views/Merchant/ArtikelDetail.js";
 import Chat from "../views/Merchant/Chat.js";
 import ConfirmDetail from "../views/Merchant/CorfirmDetail.js";
 import DaftarOrder from "../views/Merchant/DaftarOrder.js";
 import LIveChat from "../views/Merchant/LiveChat.js";
 import Recycle from "../views/Merchant/Recycle.js";
+import RecycleSharing from "../views/Merchant/RecycleSharing.js";
 import Sharing from "../views/Merchant/Sharing.js";
 import SharingDelivery from "../views/Merchant/SharingDelivery.js";
 import Order from "../views/Order/Order.js";
@@ -46,10 +50,14 @@ export default function Admin() {
               <Route path="/admin/confirm-order" exact component={ConfirmDetail} />
               {/* sumbangan */}
               <Route path="/admin/sharing" exact component={Sharing} />
+              <Route path="/admin/recycle" exact component={RecycleSharing} />
               <Route path="/admin/sharing-delivery" exact component={SharingDelivery} />
               {/* admin */}
               <Route path="/admin/approval" exact component={Approval} />
-              <Route path="/admin/approval/detail/:id" exact component={ApprovalDetail} />
+              <Route path="/admin/approval-driver/detail/:id" exact component={ApprovalDriver} />
+              <Route path="/admin/approval-merchant/detail/:id" exact component={ApprovalDetail} />
+              <Route path="/admin/approval-organisasi/detail/:id" exact component={ApprovalOrganisasi} />
+
               {/* driver */}
               <Route path="/admin/driver/delivery" exact component={DeliveryList} />
               <Route path="/admin/driver/delivery/:id" exact component={Driver} />
@@ -60,6 +68,7 @@ export default function Admin() {
               <Route path="/admin/organisasi" exact component={Organisasi} />
               {/* artikel */}
               <Route path="/admin/artikel" exact component={Recycle} />
+              <Route path="/admin/artikel/:id" exact component={ArtikelDetail} />
               <Redirect from="/admin" to="/admin" />
             </Switch>
           </Suspense>

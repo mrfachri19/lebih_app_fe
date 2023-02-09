@@ -50,9 +50,7 @@ function DaftarOrder() {
       }
       const response = await PostMenu(formImage);
       Messaege("Succes", "Success add menu", "success");
-      setTimeout(() => {
         window.location();
-      }, 2000);
       console.log(response);
     } catch (error) {
       console.log(error);

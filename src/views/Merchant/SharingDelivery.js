@@ -81,7 +81,7 @@ function SharingDelivery() {
           <div className="flex">
             <img src={iconToko} alt="img" className="mr-4" />
             <p className="font-semibold text-4xl text-green-20 mt-2">
-              Harvest - Grogol Petamburan{" "}
+              {localStorage.getItem("namaOrganisasi")}
             </p>
           </div>
           <div className="flex mt-20">

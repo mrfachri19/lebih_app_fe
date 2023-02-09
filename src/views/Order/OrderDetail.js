@@ -135,7 +135,7 @@ function OrderDetail() {
             <div className="flex flex-row gap-52">
               <p className="font-medium text-3xl text-green-20">Total</p>
               <p className="font-medium text-3xl text-green-20">
-                Rp.{Number(localStorage.getItem("harga")) + 11000}
+                Rp.{Number(localStorage.getItem("harga")) * Number(localStorage.getItem("jumlah")) + 11000}
               </p>
             </div>
           </div>

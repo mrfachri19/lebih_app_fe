@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Messaege } from "../../helper/helper";
 
-function OrderForms() {
+function OrderFormsRcycle() {
   const [alamat, setAlamat] = useState("");
   const [phone, setPhone] = useState("");
   const [nama, setNama] = useState("");
@@ -17,7 +17,7 @@ function OrderForms() {
   return (
     <div className="flex flex-wrap pb-10">
       <div className="w-full xl:w-1/2 mb-12 xl:mb-0 px-4 mt-20 pl-16">
-        <h1 className="font-bold text-base text-green-20">SHARING </h1>
+        <h1 className="font-bold text-base text-green-20">RECYCLE </h1>
         <h1 className="font-bold text-base text-green-20">
           HOW WOULD YOU LIKE YOUR FOOD ?
         </h1>
@@ -97,4 +97,4 @@ function OrderForms() {
   );
 }
 
-export default OrderForms;
+export default OrderFormsRcycle;
