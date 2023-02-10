@@ -69,7 +69,10 @@ function Order() {
         </h1>
         <div className="grid-cols-3 grid gap-20 mx-36 py-10">
           {dataResto.map((item, idx) => (
-            <div key={idx} className="block border-green-20 rounded-xl border-2 p-5">
+            <div
+              key={idx}
+              className="block border-green-20 rounded-xl border-2 p-5"
+            >
               <img
                 src={food1}
                 alt="img"
@@ -85,7 +88,10 @@ function Order() {
               <button
                 type="button"
                 className="text-white mt-3 bg-green-20 hover:bg-green-700 focus:ring-4 focus:bg-green-20 font-medium rounded-lg text-xl px-12 py-2.5 mb-2 dark:bg-green-20 focus:outline-none mx-10"
-                onClick={() => history.push(`/admin/order-customer/${item.id}`)}
+                onClick={() => {
+                  history.push(`/admin/order-customer/${item.id}`);
+                  localStorage.setItem("idMenumakanan", item.id_merchant);
+                }}
               >
                 Order
               </button>

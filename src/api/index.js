@@ -93,6 +93,11 @@ export const getAllDriver = get("driver");
 // ============= driver
 export const postArtikel = post("artikel");
 export const getArtikel = get("artikel");
+// ============= driver
+export const postFood = post("food");
+export const getFood = get("food");
+// ============= transasksi
+export const postTransaksi = post("transaksi");
 
 const API = {
   register,
@@ -107,7 +112,9 @@ const API = {
   getAllORganisasi,
   getAllDriver,
   postArtikel,
-  getArtikel
+  getArtikel,
+  postFood,
+  getFood
 };
 
 export default API;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { merchantPost } from "../../api";
+import React, { useEffect, useState } from "react";
+import { merchantPost, getListRestaurant } from "../../api";
 import { Messaege } from "../../helper/helper";
 
 function OrderMerchant() {
@@ -11,20 +11,35 @@ function OrderMerchant() {
   const [kategori, setkategori] = useState("");
 
   function submitOrder() {
-    let data = {
-      namaResto: namaresto,
-      alamat: alamat,
-      phone: phone,
-      detailGedung: detailGedung,
-      jamOprasi: jamOprasi,
-      kategori: kategori,
-    };
-    merchantPost(data).then((res) => {
-      console.log(res);
-      Messaege("Succes", "Success order", "success");
-      localStorage.setItem("idMerchant", res.data.data.id)
+    if (localStorage.getItem("idUse") != dataREsto.id_merchant) {
+      let data = {
+        id_merchant: localStorage.getItem("idUse"),
+        namaResto: namaresto,
+        alamat: alamat,
+        phone: phone,
+        detailGedung: detailGedung,
+        jamOprasi: jamOprasi,
+        kategori: kategori,
+      };
+      merchantPost(data).then((res) => {
+        console.log(res);
+        Messaege("Succes", "Success order", "success");
+        localStorage.setItem("idMerchant", res.data.data.id);
+      });
+    } else {
+      Messaege("Failed", "Data Resto Sudah ada", "failed");
+    }
+  }
+  const [dataREsto, setdataResto] = useState("");
+  function getRestaurant() {
+    getListRestaurant(`/akun/${localStorage.getItem("idUse")}`).then((res) => {
+      console.log("List Data detail => ", res.data.data[0]);
+      setdataResto(res.data.data[0]);
     });
   }
+  useEffect(() => {
+    getRestaurant();
+  }, []);
   return (
     <div className="flex flex-wrap pb-10">
       <div className="w-full xl:w-1/2 mb-12 xl:mb-0 px-4 mt-20 pl-16">

@@ -30,9 +30,9 @@ function DaftarOrder() {
   const postDataMenu = async (e) => {
     try {
       e.preventDefault();
-      const { id_merchant, nama, harga, diskon, image } = formMenu;
+      const {  nama, harga, diskon, image } = formMenu;
       const setDataForm = {
-        id_merchant: localStorage.getItem("idMerchant"),
+        id_merchant: localStorage.getItem("idUse"),
         nama,
         harga,
         diskon,
@@ -50,7 +50,6 @@ function DaftarOrder() {
       }
       const response = await PostMenu(formImage);
       Messaege("Succes", "Success add menu", "success");
-        window.location();
       console.log(response);
     } catch (error) {
       console.log(error);

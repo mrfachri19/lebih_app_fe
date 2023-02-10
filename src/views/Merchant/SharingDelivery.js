@@ -1,5 +1,5 @@
-import React from "react";
-import food1 from "../../assets/img/food-1.png";
+import React, { useEffect, useState } from "react";
+import { getFood,getAllORganisasi } from "../../api";
 import iconMaps from "../../assets/img/Vector.svg";
 import iconClock from "../../assets/img/mdi_clock-time-eight-outline.svg";
 import iconToko from "../../assets/img/material-symbols_table-restaurant-outline.svg";
@@ -12,6 +12,26 @@ function SharingDelivery() {
     Messaege("Succes", "Success", "success");
     history.push("/admin/sharing");
   };
+
+  const [data, setdata] = useState("");
+  function getRestaurant() {
+    getFood(`/${localStorage.getItem("idFood")}`).then((res) => {
+      console.log("List Data detail => ", res.data.data[0]);
+      setdata(res.data.data[0]);
+    });
+  }
+  const [datas, setdatas] = useState("");
+  function getRestaurants() {
+    getAllORganisasi(`/${localStorage.getItem("idFood")}`).then((res) => {
+      console.log("List Data detail => ", res.data.data[0]);
+      setdatas(res.data.data[0]);
+    });
+  }
+  useEffect(() => {
+    getRestaurant();
+    getRestaurants();
+
+  }, []);
   return (
     <>
       <div className="flex pb-10">
@@ -81,20 +101,23 @@ function SharingDelivery() {
           <div className="flex">
             <img src={iconToko} alt="img" className="mr-4" />
             <p className="font-semibold text-4xl text-green-20 mt-2">
-              {localStorage.getItem("namaOrganisasi")}
+            {localStorage.getItem("nama")}
+
             </p>
           </div>
           <div className="flex mt-20">
             <img
-              src={food1}
-              alt="img"
+                src={`https://apilebihapp-production.up.railway.app/uploads/movie/${data.image}`}
+                alt="img"
               style={{ width: "150px", height: "170px" }}
               className="rounded-xl mr-10"
             />
             <div className="block">
               <h1 className="font-semibold text-3xl text-green-20">
-                {localStorage.getItem("jumlahsharing")}x{" "}
-                {localStorage.getItem("kategorisharing")}
+              {data.total}x {data.nama}
+              </h1>
+              <h1 className="font-semibold text-3xl text-green-20">
+              Katgori: {data.kategori}
               </h1>
             </div>
           </div>
@@ -110,14 +133,14 @@ function SharingDelivery() {
           </div>
           <div className="flex mt-20">
             <img
-              src={food1}
-              alt="img"
+                src={`https://apilebihapp-production.up.railway.app/uploads/movie/${datas.image}`}
+                alt="img"
               style={{ width: "150px", height: "170px" }}
               className="rounded-xl mr-10"
             />
             <div className="block">
               <h1 className="font-semibold text-3xl text-green-20">
-                {localStorage.getItem("nama")}
+              {localStorage.getItem("namaOrganisasi")}
               </h1>
               <h1 className="font-semibold text-3xl text-green-20">
                 {localStorage.getItem("alamat")}

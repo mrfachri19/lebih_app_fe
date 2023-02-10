@@ -4,7 +4,7 @@ import iconClock from "../../assets/img/mdi_clock-time-eight-outline.svg";
 import iconToko from "../../assets/img/material-symbols_table-restaurant-outline.svg";
 import Select from "react-dropdown-select";
 import { useHistory } from "react-router-dom";
-import { postOrder } from "../../api";
+import { postTransaksi } from "../../api";
 import { Messaege } from "../../helper/helper";
 
 function OrderPreview() {
@@ -25,16 +25,11 @@ function OrderPreview() {
 
   function submitOrder() {
     let data = {
-      alamat: localStorage.getItem("alamat"),
-      nama: localStorage.getItem("nama"),
-      phone: localStorage.getItem("phone"),
-      building: localStorage.getItem("building"),
-      harga: localStorage.getItem("harga"),
-      namaMakanan: localStorage.getItem("namamenu"),
-      jumlah: localStorage.getItem("jumlah"),
-      image: localStorage.getItem("image"),
+      nomor: localStorage.getItem("akun"),
+      payment: localStorage.getItem("payment"),
+      total: localStorage.getItem("harga"),
     };
-    postOrder(data).then((res) => {
+    postTransaksi(data).then((res) => {
       Messaege("Succes", "Success order", "success");
       setTimeout(() => {
         history.push("/admin/order");
@@ -140,9 +135,9 @@ function OrderPreview() {
           </p>
           <div className="flex my-10 mx-9">
             <p className="font-medium text-3xl text-green-20 ">
-              Metode Pembayaran: {localStorage.getItem("payment")} | {localStorage.getItem("akun")}
+              Metode Pembayaran: {localStorage.getItem("payment")} |{" "}
+              {localStorage.getItem("akun")}
             </p>
-
           </div>
           <div className="block mb-2 ml-9">
             <div className="flex flex-row gap-9">

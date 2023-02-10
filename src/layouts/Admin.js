@@ -51,7 +51,7 @@ export default function Admin() {
               {/* sumbangan */}
               <Route path="/admin/sharing" exact component={Sharing} />
               <Route path="/admin/recycle" exact component={RecycleSharing} />
-              <Route path="/admin/sharing-delivery" exact component={SharingDelivery} />
+              <Route path="/admin/sharing-delivery/:id" exact component={SharingDelivery} />
               {/* admin */}
               <Route path="/admin/approval" exact component={Approval} />
               <Route path="/admin/approval-driver/detail/:id" exact component={ApprovalDriver} />

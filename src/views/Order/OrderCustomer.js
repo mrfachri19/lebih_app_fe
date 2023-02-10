@@ -19,7 +19,7 @@ function OrderCusrtomer() {
     });
   }
   function getMenu() {
-    getmenuIdMerchant(`/${id}`).then((res) => {
+    getmenuIdMerchant(`/${localStorage.getItem("idMenumakanan")}`).then((res) => {
       var tempList = [];
       tempList = res.data.data;
       console.log("List Data menu => ", tempList);

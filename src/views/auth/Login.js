@@ -21,6 +21,7 @@ export default function Login() {
         if (localStorage.getItem("role") === "costumer") {
           history.push("/admin/order");
         } else if (localStorage.getItem("role") === "merchant") {
+          localStorage.setItem("idUse", response.data.data.idUse);
           history.push("/admin/daftar-order");
         } else if (localStorage.getItem("role") === "driver") {
           history.push("/admin/driver");
